@@ -38,4 +38,3 @@ def secuencia_cubica(n):
         return (secuencia_cubica(n-1)**3)-0.5 
 
 #print(secuencia_cubica(4))
-
