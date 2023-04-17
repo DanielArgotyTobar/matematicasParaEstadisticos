@@ -1,18 +1,37 @@
-### 1.a Generar los números de 1 a n (listo)
+### Tarea 01. recursividad. Semana 03 ###
+
+### 1.a Generar los números de 1 a n
+
+def gen_n(num):
+    #vector = []
+    if num == 1:
+        print(num)
+        #return num
+    else:
+        gen_n(num-1)
+        print(num)
+        #return num
+
+# Ejemplo de uso
+# num = 100
+# y = gen_n(num)
+# print(y)
+
+## Final. Listo ##
 def list_number(end, start=1):
     if start > end:
         return []
     elif start >= 1:
         return [start] + list_number(end, start+1)
-    
+
 # Ejemplo de uso
 # num = 20;
 # y = list_number(num, start=1);
 # print(y)
 
 
-
 ### 1.b Sumatoria recursiva de 1 hasta n enteros positivos
+
 def recursive_sum(num):
     if type(num) == float:
         return None
@@ -31,7 +50,10 @@ def recursive_sum(num):
 #print(y)
 
 
+
+
 ### 2. Calcular potencia positiva entera de un número real mediante un método recursivo ###
+
 def exponentiation(base, exp):
     if exp == 0:
         return 1
@@ -49,9 +71,8 @@ def exponentiation(base, exp):
 # print(y)
 
 
-
-
 ### 3. Generar un termino cualquiera del Triangulo de Pacal
+
 def pascal_triangle(m,n):
     if (m==0 or n==0):
         return 1
@@ -65,9 +86,11 @@ def pascal_triangle(m,n):
 # print(y);
 
 
-### 4. convertir de Decimal A Binario
 
-# Funcion Recursiva para pasar numero naturales a numeros binarios
+
+
+### 4. convertir de Decimal A Binario
+# Funcion para pasar numero naturales a numeros binarios
 def int_decimal_to_binary(num):
     #print(num)
     if num < 2:
@@ -79,6 +102,7 @@ def int_decimal_to_binary(num):
 # num1 = 5
 # z = int_decimal_to_binary(num1)
 # print(z)
+# print("============================================================")
 
 def float_decimal_to_binary(num):  
     parte_entera = int(num)
@@ -88,12 +112,22 @@ def float_decimal_to_binary(num):
         return []
     else:
         return [int(num)] + float_decimal_to_binary(parte_decimal2 * 2)
-
 # Ejemplo de uso
-# num = 2.9022
+#num = 2.9022
 # num = 10.5
 # y = float_decimal_to_binary(num)
 # print(y)
+# y.remove(y[0])
+# print("======================")
+# print(y)
+
+
+def list_to_string(lista):
+    string = ""
+    for i in range(len(lista)):
+        string += str(lista[i])
+    return string
+
 
 def decimal_to_binary(num):
     
@@ -123,16 +157,21 @@ def decimal_to_binary(num):
 
 
 
+
 ### 5. Binario a decimal
 
-# Pasar parte entera del numero binario a decimal
+# binario = "1010"
+# decimal = int(binario, 2)
+# print(decimal)
+
+
+
 def int_part_to_decimal(lista1, i = 0):
     if not lista1:
         return []
     else:
         return [lista1[0]*2**(i)] + int_part_binary(lista1[1:], i + 1)
 
-# Pasar parte fraccionanria del numero binario a decimal
 def float_part_to_decimal(lista2, i = -1):
     if not lista2:
         return []
@@ -161,10 +200,10 @@ def binary_to_decimal(num):
     
     return decimal_num
 
-# Ejemplo de Uso
 # bin = 10.111001
 # y = binary_to_decimal(bin)
 # print(y)
+
 
 
 ### 6. Generar termino de la sucesión T(n)
@@ -195,7 +234,7 @@ def terms_of_succession(n):
 
 
 ### 7. Una poblacion se triplica cada año
-# Grafico coweb (f(x) = 3x)
+# Grafico coweb
 # https://www.geogebra.org/m/wQejYhpt
 
 def population_triples(years, initial_population):
@@ -212,56 +251,30 @@ def population_triples(years, initial_population):
 
 
 ### 8. Modelo poblacional
-# Grafico coweb https://www.geogebra.org/m/wQejYhpt   
-# (3.7x)(1 - x) con x_0=0.2 y x_0=0.71
 
-
-def population_model_1(n):
+def modelo_poblacional_1(n):
     if n == 0:
         return 0.2
     else:
-        return (3.7) * population_model_1(n-1) * (1 - population_model_1(n-1))
-
-# Ejemplo De Uso
-# n = 2
-# y = population_model_1(n)
-# print(y)
-    
-def population_model_2(n):
-    if n == 0:
-        return 0.71
-    else:
-        return (3.7) * population_model_2(n-1) * (1 - population_model_2(n-1))
+        return (3.7) * modelo_poblacional_1(n-1) * (1 - modelo_poblacional_1(n-1))
 # Ejemplo de uso
 # n = 2
-# y = modelo_poblacional_2(n)
+# y = modelo_poblacional_1(n)
 # print(y)
 
-# pasar los valores del modelo poblaciona a una (lista)
-def add_value_to_list_1(n, lista, m = 25):
-    if n < m:
-        lista.append(population_model_1(n))
-        add_value_to_list_1(n + 1, lista)
-
-def add_value_to_list_2(n, lista, m = 25):
-    if n < m:
-        lista.append(population_model_2(n))
-        add_value_to_list_1(n + 1, lista)
-
-
-
-
-
-####################################################################
-# value_population_model_1 = []
-# add_value_to_list_1(0, value_population_model_1, 25)
+########################################################################
+valores_modelo_poblacional_1 = []
+for i in range(20):
+    valores_modelo_poblacional_1.append(modelo_poblacional_1(i))
+#print(valores_modelo_poblacional_1)
+y_valores = valores_modelo_poblacional_1
 
 # # Grafica modelo poblacional 1 x0 = 0.2
 # import matplotlib.pyplot as plt
 
 # # Datos de ejemplo
-# x = list_number(25)
-# y = value_population_model_1
+# x = list_number(20)
+# y = valores_modelo_poblacional_1
 
 # # Graficar los datos
 # plt.plot(x, y, "-o")
@@ -286,19 +299,29 @@ def add_value_to_list_2(n, lista, m = 25):
 
 # # Mostrar el gráfico
 # plt.show()
-########################################################################
+# ########################################################################
 
+def modelo_poblacional_2(n):
+    if n == 0:
+        return 0.71
+    else:
+        return (3.7) * modelo_poblacional_2(n-1) * (1 - modelo_poblacional_2(n-1))
+# Ejemplo de uso
+# n = 2
+# y = modelo_poblacional_2(n)
+# print(y)
 
+#################################################################
+# valores_modelo_poblacional_2 = []
+# for i in range(25):
+#     valores_modelo_poblacional_2.append(modelo_poblacional_2(i))
 
-####################################################################
-# value_population_model_2 = []
-# add_value_to_list_2(0, value_population_model_2, 25)
-# # Grafica modelo poblacional 1 x0 = 0.2
+# # Grafica modelo poblacional 2 x0 = 0.71
 # import matplotlib.pyplot as plt
 
 # # Datos de ejemplo
 # x = list_number(25)
-# y = value_population_model_2
+# y = valores_modelo_poblacional_2
 
 # # Graficar los datos
 # plt.plot(x, y, "-o")
@@ -323,74 +346,72 @@ def add_value_to_list_2(n, lista, m = 25):
 
 # # Mostrar el gráfico
 # plt.show()
-########################################################################
-
-
-
-#### 10. Método Newton-Raphson para cos(x)=x
-
-##############################################################
-#import math
-# # Función principal cos(x)=x ->  f(x)= cos(x) - x
-# def f(x):
-#     return math.cos(x) - x
-
-# # Dericada de la función principal: df(x) = -sin(x) - 1
-# def df(x):
-#     return (math.sin(x) * -1) - 1
-################################################################
-# Método Newton-Raphson
-def newton_raphson(x0, precision):
-    fx0 = f(x0)
-    dfx0 = df(x0)
-    x1 = x0 - fx0 / dfx0
-    # aplicando error relativo |actual-anterior| / |actual|
-    if (abs(x1-x0)/abs(x1)) < precision:
-        return x1
-    else:
-        return newton_raphson(x1, precision)
-
-# Ejemplo de uso para cos(x)=x
-# x0 = 3  # Valor inicial
-# precision = 0.001  # precision
-# root = newton_raphson(x0, precision)
-# print(f"La raiz de la funcion es: {root}")
+####################################################################
 
 
 
 
+#### 10. 
+import math
 
-
-
-### 11. Raiz cuadrada de 3: sqrt(3)=x
-# Definir la función 
 def f(x):
-    return abs(3) - x**2
-# Definir la derivada de la función
+    return math.cos(x) - x
+
 def df(x):
-    return -2*x
-# # Ejemplo de uso para sqrt(3)=x
+    return (math.sin(x)*(-1)) - 1
+
+def newton_raphson(x0, precision, max_iter):
+    i = 0
+    while i < max_iter:
+        fx0 = f(x0)
+        dfx0 = df(x0)
+        x1 = x0 - fx0 / dfx0
+        if abs(x1 - x0) < precision:
+            return x1
+        x0 = x1
+        i += 1
+    print("no se hubo convergencia en ", max_iter, "iteraciones.")
+    return None
+
+# Ejemplo de uso
 # x0 = 3  # Valor inicial
 # precision = 0.001  # precision
-# root = newton_raphson(x0, precision)
-# print(f"La raiz de la funcion es: {root}")
+# max_iter = 100  # Número de iteraciones
+# raiz = newton_raphson(x0, precision, max_iter)
+
+# if raiz is not None:
+#     print("La raiz de la funcion es:", raiz)
+# else:
+#     print("No se encontro una raiz en las iteraciones permitidas.")
 
 
 
-#### 12. Aproximar la raiz cuadrada de un número positivo: sqrt(a)
+### 11. Raiz cuadrada de 3
 
-def divide_and_average(a, x0, precision):
-    x1 = (x0 + (a/x0)) / 2
-    # Se usa error relativo
-    if ( abs(x1 - x0) / abs(x1) ) < precision:
-        return x1
-    else:
-        return divide_and_average(a, x1, precision)
+def f(x):
+    return x**(2) - 3
 
-######## 12.a Probar para: sqrt(2) y sqrt(0.7433)
-# #a = 2
-# a = 0.7433
-# x0 = 3
-# precision = 1e-6
-# result = divide_and_average(a,x0,precision)
-# print(f"El valor de sqrt({a}) es: {result}")
+def df(x):
+    return 2*x
+
+x0 = 1  # Valor inicial
+presicion = 0.00001  # precision
+max_iter = 100  # Número de iteraciones
+raiz = newton_raphson(x0, presicion, max_iter)
+
+if raiz is not None:
+    print("La raiz de la funcion es:", raiz)
+else:
+    print("No se encontro una raiz en las iteraciones permitidas.")
+
+
+
+
+
+
+
+
+    
+    
+    
+    
